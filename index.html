@@ -27,7 +27,7 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
 .pagto-btn{padding:10px;border:1px solid #ddd;border-radius:10px;font-size:13px;text-align:center;cursor:pointer;color:#555;background:#f9f9f9}
 .pagto-btn.selected{background:#FFF3E0;border-color:#E8620A;color:#B8460A;font-weight:600}
 .tab-bar{display:flex;gap:4px;margin-bottom:16px;background:#eee;border-radius:12px;padding:4px}
-.tab{flex:1;padding:8px;text-align:center;font-size:12px;font-weight:600;color:#888;border-radius:9px;cursor:pointer}
+.tab{flex:1;padding:8px;text-align:center;font-size:11px;font-weight:600;color:#888;border-radius:9px;cursor:pointer}
 .tab.active{background:#fff;color:#E8620A;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
 .kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
 .kpi{background:#fff;border-radius:14px;padding:12px;text-align:center;border:1px solid #eee}
@@ -40,8 +40,7 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
 .badge-fiad{background:#FFF3E0;color:#E65100}
 .badge-cart{background:#F3E5F5;color:#6A1B9A}
 .screen{display:none}.screen.active{display:block}
-.profile-sel{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:1rem 0}
-.profile-card{border:2px solid #eee;border-radius:16px;padding:1.5rem 1rem;text-align:center;cursor:pointer;background:#fff;transition:all 0.2s}
+.profile-card{border:2px solid #eee;border-radius:16px;padding:1.5rem 1rem;text-align:center;cursor:pointer;background:#fff;transition:all 0.2s;margin-bottom:12px}
 .profile-card:hover{border-color:#E8620A;transform:translateY(-2px)}
 .profile-avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;margin:0 auto 10px}
 .top-bar{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #eee}
@@ -50,15 +49,22 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
 .empty{text-align:center;padding:2rem;color:#aaa;font-size:14px}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;z-index:999;opacity:0;transition:opacity 0.3s;white-space:nowrap}
 .toast.show{opacity:1}
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;display:none;align-items:flex-end;justify-content:center}
-.modal-overlay.show{display:flex}
-.modal{background:#fff;border-radius:20px 20px 0 0;padding:1.5rem;width:100%;max-width:420px}
-.modal-title{font-size:16px;font-weight:700;margin-bottom:16px}
 .list-item{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#f9f9f9;border-radius:10px;margin-bottom:6px;font-size:14px}
 .btn-danger{padding:6px 12px;background:#FEE2E2;color:#DC2626;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer}
 .input-row{display:flex;gap:8px;margin-top:8px}
 .input-row input{flex:1}
 .input-row button{padding:10px 16px;background:#E8620A;color:#fff;border:none;border-radius:10px;font-weight:600;cursor:pointer;white-space:nowrap}
+.rota-dia{background:#fff;border-radius:12px;border:1px solid #eee;padding:10px 12px;margin-bottom:8px}
+.rota-dia-header{font-size:13px;font-weight:700;color:#E8620A;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.rota-cliente{font-size:13px;color:#444;padding:4px 0;border-bottom:1px solid #f5f5f5}
+.rota-cliente:last-child{border-bottom:none}
+.senha-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;display:flex;align-items:center;justify-content:center}
+.senha-box{background:#fff;border-radius:20px;padding:2rem;width:90%;max-width:360px;text-align:center}
+.senha-titulo{font-size:18px;font-weight:700;margin-bottom:8px}
+.senha-sub{font-size:13px;color:#888;margin-bottom:20px}
+.senha-input{width:100%;padding:12px;border:2px solid #ddd;border-radius:12px;font-size:18px;text-align:center;letter-spacing:4px;margin-bottom:12px}
+.senha-input:focus{outline:none;border-color:#E8620A}
+.senha-erro{color:#DC2626;font-size:13px;margin-bottom:8px;min-height:20px}
 </style>
 </head>
 <body>
@@ -71,38 +77,27 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
     <div style="font-size:20px;font-weight:700">Nina Temperos</div>
     <div style="font-size:13px;color:#888;margin-top:4px">Quem está acessando?</div>
   </div>
-  <div class="profile-sel">
-    <div class="profile-card" onclick="entrar('levi')">
-      <div class="profile-avatar" style="background:#E3F2FD;color:#1565C0">L</div>
-      <div style="font-size:15px;font-weight:600">Levi</div>
-      <div style="font-size:12px;color:#888;margin-top:2px">Vendedor</div>
-    </div>
-    <div class="profile-card" onclick="entrar('wendell')">
-      <div class="profile-avatar" style="background:#FFF3E0;color:#E8620A">W</div>
-      <div style="font-size:15px;font-weight:600">Wendell</div>
-      <div style="font-size:12px;color:#888;margin-top:2px">Gestor</div>
-    </div>
-  </div>
+  <div id="lista-perfis"></div>
 </div>
 
-<!-- LEVI -->
-<div class="screen" id="screen-levi">
+<!-- VENDEDOR -->
+<div class="screen" id="screen-vendedor">
   <div class="top-bar">
-    <div style="width:36px;height:36px;border-radius:50%;background:#E3F2FD;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#1565C0">L</div>
-    <div style="flex:1"><div style="font-size:14px;font-weight:600">Levi — Vendedor</div><div style="font-size:12px;color:#888" id="levi-data"></div></div>
+    <div id="avatar-vendedor" style="width:36px;height:36px;border-radius:50%;background:#E3F2FD;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#1565C0"></div>
+    <div style="flex:1"><div id="nome-vendedor-top" style="font-size:14px;font-weight:600"></div><div style="font-size:12px;color:#888" id="vendedor-data"></div></div>
     <button onclick="voltar()" style="background:none;border:none;font-size:12px;color:#aaa;cursor:pointer">Sair</button>
   </div>
   <div class="tab-bar">
-    <div class="tab active" onclick="leviTab('registrar')">Nova venda</div>
-    <div class="tab" onclick="leviTab('minhas')">Minhas vendas</div>
-    <div class="tab" onclick="leviTab('cliente')">+ Cliente</div>
+    <div class="tab active" onclick="vendedorTab('registrar')">Nova venda</div>
+    <div class="tab" onclick="vendedorTab('minhas')">Minhas vendas</div>
+    <div class="tab" onclick="vendedorTab('rota')">Rota do dia</div>
+    <div class="tab" onclick="vendedorTab('cliente')">+ Cliente</div>
   </div>
 
-  <!-- REGISTRAR -->
-  <div id="levi-registrar">
+  <div id="v-registrar">
     <div class="card">
       <div class="section-label">Cliente</div>
-      <select id="sel-cliente"><option value="">Carregando clientes...</option></select>
+      <select id="sel-cliente"><option value="">Carregando...</option></select>
     </div>
     <div class="card">
       <div class="section-label">Sabores vendidos</div>
@@ -128,99 +123,133 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
     <button class="btn-primary" id="btn-confirmar" onclick="confirmarVenda()" disabled>Confirmar venda</button>
   </div>
 
-  <!-- MINHAS VENDAS -->
-  <div id="levi-minhas" style="display:none">
+  <div id="v-minhas" style="display:none">
     <div class="kpi-grid">
-      <div class="kpi"><div class="kpi-val" id="levi-kpi-v">0</div><div class="kpi-label">Vendas hoje</div></div>
-      <div class="kpi"><div class="kpi-val" id="levi-kpi-c">0</div><div class="kpi-label">Cartelas</div></div>
+      <div class="kpi"><div class="kpi-val" id="v-kpi-v">0</div><div class="kpi-label">Vendas hoje</div></div>
+      <div class="kpi"><div class="kpi-val" id="v-kpi-c">0</div><div class="kpi-label">Cartelas</div></div>
     </div>
-    <div id="levi-lista"><div class="empty">Nenhuma venda ainda hoje.</div></div>
+    <div id="v-lista-vendas"><div class="empty">Nenhuma venda ainda hoje.</div></div>
   </div>
 
-  <!-- NOVO CLIENTE -->
-  <div id="levi-cliente" style="display:none">
+  <div id="v-rota" style="display:none">
+    <div class="card" style="background:#FFF3E0;border-color:#E8620A44">
+      <div style="font-size:13px;font-weight:600;color:#E8620A;margin-bottom:4px">📍 Rota de hoje</div>
+      <div id="rota-hoje-label" style="font-size:12px;color:#888"></div>
+    </div>
+    <div id="rota-lista"></div>
+  </div>
+
+  <div id="v-cliente" style="display:none">
     <div class="card">
       <div class="section-label">Cadastrar novo cliente</div>
       <input id="nc-nome" placeholder="Nome do estabelecimento" style="margin-bottom:8px">
       <input id="nc-resp" placeholder="Responsável" style="margin-bottom:8px">
-      <input id="nc-tel" placeholder="WhatsApp (81 9xxxx-xxxx)" style="margin-bottom:8px">
+      <input id="nc-tel" placeholder="WhatsApp" style="margin-bottom:8px">
       <input id="nc-bairro" placeholder="Bairro" style="margin-bottom:8px">
       <select id="nc-tipo" style="margin-bottom:8px">
         <option value="">Tipo do cliente...</option>
-        <option>Mercadinho</option>
-        <option>Mercearia</option>
-        <option>Restaurante</option>
-        <option>Lanchonete</option>
-        <option>Feira/Sacolão</option>
-        <option>Outro</option>
+        <option>Mercadinho</option><option>Mercearia</option><option>Restaurante</option>
+        <option>Lanchonete</option><option>Feira/Sacolão</option><option>Outro</option>
       </select>
       <button class="btn-primary" onclick="salvarNovoCliente()">Salvar cliente</button>
     </div>
   </div>
 </div>
 
-<!-- WENDELL -->
-<div class="screen" id="screen-wendell">
+<!-- GESTOR -->
+<div class="screen" id="screen-gestor">
   <div class="top-bar">
-    <div style="width:36px;height:36px;border-radius:50%;background:#FFF3E0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#E8620A">W</div>
-    <div style="flex:1"><div style="font-size:14px;font-weight:600">Wendell — Gestor</div><div style="font-size:12px;color:#888"><span class="dot-live"></span>Tempo real</div></div>
+    <div id="avatar-gestor" style="width:36px;height:36px;border-radius:50%;background:#FFF3E0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#E8620A"></div>
+    <div style="flex:1"><div id="nome-gestor-top" style="font-size:14px;font-weight:600"></div><div style="font-size:12px;color:#888"><span class="dot-live"></span>Tempo real</div></div>
     <button onclick="voltar()" style="background:none;border:none;font-size:12px;color:#aaa;cursor:pointer">Sair</button>
   </div>
   <div class="tab-bar">
-    <div class="tab active" onclick="wendellTab('vendas')">Vendas</div>
-    <div class="tab" onclick="wendellTab('clientes')">Clientes</div>
-    <div class="tab" onclick="wendellTab('produtos')">Produtos</div>
+    <div class="tab active" onclick="gestorTab('vendas')">Vendas</div>
+    <div class="tab" onclick="gestorTab('rota')">Rota</div>
+    <div class="tab" onclick="gestorTab('clientes')">Clientes</div>
+    <div class="tab" onclick="gestorTab('produtos')">Produtos</div>
+    <div class="tab" onclick="gestorTab('config')">Config</div>
   </div>
 
-  <!-- VENDAS -->
-  <div id="w-vendas">
+  <div id="g-vendas">
     <div class="kpi-grid">
       <div class="kpi"><div class="kpi-val" id="w-v">0</div><div class="kpi-label">Vendas hoje</div></div>
       <div class="kpi"><div class="kpi-val" id="w-c">0</div><div class="kpi-label">Cartelas</div></div>
       <div class="kpi"><div class="kpi-val" id="w-f">R$ 0</div><div class="kpi-label">Faturamento</div></div>
       <div class="kpi"><div class="kpi-val" id="w-l">R$ 0</div><div class="kpi-label">Lucro (66%)</div></div>
     </div>
-    <div id="wendell-lista"><div class="empty">Aguardando vendas...</div></div>
+    <div id="g-lista-vendas"><div class="empty">Aguardando vendas...</div></div>
   </div>
 
-  <!-- CLIENTES -->
-  <div id="w-clientes" style="display:none">
+  <div id="g-rota" style="display:none">
+    <div class="section-label" style="margin-bottom:8px">Rota semanal completa</div>
+    <div id="g-rota-lista"></div>
+  </div>
+
+  <div id="g-clientes" style="display:none">
     <div class="card">
       <div class="section-label">Adicionar cliente</div>
       <div class="input-row">
         <input id="w-nc-nome" placeholder="Nome do cliente">
-        <button onclick="wendellAddCliente()">+ Add</button>
+        <button onclick="gestorAddCliente()">+ Add</button>
       </div>
     </div>
     <div class="section-label" style="margin-bottom:8px">Clientes cadastrados</div>
-    <div id="w-lista-clientes"><div class="empty">Carregando...</div></div>
+    <div id="g-lista-clientes"><div class="empty">Carregando...</div></div>
   </div>
 
-  <!-- PRODUTOS -->
-  <div id="w-produtos" style="display:none">
+  <div id="g-produtos" style="display:none">
     <div class="card">
       <div class="section-label">Adicionar produto</div>
       <input id="w-np-nome" placeholder="Nome do produto" style="margin-bottom:8px">
       <select id="w-np-cat" style="margin-bottom:8px">
         <option value="">Categoria...</option>
-        <option>Naturais</option>
-        <option>Compostos</option>
-        <option>Chás</option>
-        <option>Outros</option>
+        <option>Naturais</option><option>Compostos</option><option>Chás</option><option>Outros</option>
       </select>
-      <button class="btn-primary" onclick="wendellAddProduto()" style="margin-top:0">+ Adicionar</button>
+      <button class="btn-primary" onclick="gestorAddProduto()" style="margin-top:0">+ Adicionar</button>
     </div>
     <div class="section-label" style="margin-bottom:8px">Produtos cadastrados</div>
-    <div id="w-lista-produtos"><div class="empty">Carregando...</div></div>
+    <div id="g-lista-produtos"><div class="empty">Carregando...</div></div>
+  </div>
+
+  <div id="g-config" style="display:none">
+    <div class="card">
+      <div class="section-label">Nomes do sistema</div>
+      <div style="font-size:12px;color:#888;margin-bottom:8px">Nome do vendedor (aparece na tela de login)</div>
+      <input id="cfg-vendedor" placeholder="Nome do vendedor" style="margin-bottom:8px">
+      <div style="font-size:12px;color:#888;margin-bottom:8px">Nome do gestor</div>
+      <input id="cfg-gestor" placeholder="Nome do gestor" style="margin-bottom:12px">
+      <button class="btn-primary" onclick="salvarNomes()" style="margin-top:0">Salvar nomes</button>
+    </div>
+    <div class="card">
+      <div class="section-label">Alterar senha do gestor</div>
+      <input id="cfg-senha-atual" type="password" placeholder="Senha atual" style="margin-bottom:8px">
+      <input id="cfg-senha-nova" type="password" placeholder="Nova senha" style="margin-bottom:8px">
+      <button class="btn-primary" onclick="alterarSenha()" style="margin-top:0">Alterar senha</button>
+    </div>
   </div>
 </div>
 
 </div>
+
+<!-- MODAL SENHA -->
+<div class="senha-overlay" id="senha-overlay" style="display:none">
+  <div class="senha-box">
+    <div style="font-size:28px;margin-bottom:8px">🔐</div>
+    <div class="senha-titulo">Área do Gestor</div>
+    <div class="senha-sub">Digite a senha para continuar</div>
+    <input class="senha-input" type="password" id="senha-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')verificarSenha()">
+    <div class="senha-erro" id="senha-erro"></div>
+    <button class="btn-primary" onclick="verificarSenha()">Entrar</button>
+    <button class="btn-secondary" onclick="fecharSenha()">Cancelar</button>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
-import { getDatabase, ref, push, onValue, query, orderByChild, startAt, remove, set } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-database.js";
+import { getDatabase, ref, push, onValue, query, orderByChild, startAt, remove, set, get } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAlemAuD3gIs5kK6WkV0L3H53nqygxeyKU",
@@ -236,119 +265,236 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 const PRECO = 10.50, MARGEM = 0.66;
-let itens = {}, pagamento = "", clientes = {}, produtos = {};
+const DIAS_SEMANA = ["Terça","Quarta","Quinta","Sexta","Sábado"];
+const DIAS_JS = [2,3,4,5,6]; // 0=Dom,1=Seg,2=Ter...
 
-// Produtos padrão (carregados no Firebase na primeira vez)
-const PRODUTOS_PADRAO = {
-  "Naturais": ["Pimenta calabresa","Anis estrelado","Colorau","Erva doce","Orégano","Açafrão","Curry","Louro","Pimenta do reino","Cravo","Cominho","Páprica doce","Páprica defumada","Páprica picante","Canela em pau","Canela em pó","Alho frito","Sal rosa"],
-  "Compostos": ["Chimichurri","Edu Guedes","Ana Maria","Salsa, cebola e alho","Lemon pepper","Tempero para feijão","Pega marido","Cominho com pimenta","Caldo de galinha","Caldo de carne","Tempero baiano"],
-  "Chás": ["Boldo","Camomila","Erva doce"],
-  "Outros": ["Bicarbonato"]
+let itens={}, pagamento="", clientes={}, produtos={};
+let nomeVendedor="Levi", nomeGestor="Wendell";
+let senhaGestor="Well@8852";
+
+function hojeInicio(){const d=new Date();d.setHours(0,0,0,0);return d.getTime();}
+function fmt(v){return "R$ "+v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,".");}
+function badge(p){const m={PIX:"badge-pix",Dinheiro:"badge-din",Fiado:"badge-fiad","Cartão":"badge-cart"};return `<span class="badge ${m[p]||''}">${p}</span>`;}
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2500);}
+
+// Dia da semana atual (índice nos dias de trabalho)
+function diaHojeIdx(){
+  const d=new Date().getDay(); // 0=Dom
+  return DIAS_JS.indexOf(d);
+}
+function diaHojeNome(){
+  const idx=diaHojeIdx();
+  return idx>=0?DIAS_SEMANA[idx]:"Hoje";
+}
+
+// Distribuir clientes na rota semanal
+function gerarRota(listaClientes){
+  const total=listaClientes.length;
+  const dias=DIAS_SEMANA.length; // 5 dias
+  const rota={};
+  DIAS_SEMANA.forEach(d=>rota[d]=[]);
+  listaClientes.forEach((c,i)=>{
+    const dia=DIAS_SEMANA[i%dias];
+    rota[dia].push(c);
+  });
+  return rota;
+}
+
+// Carregar config do Firebase
+async function carregarConfig(){
+  try{
+    const snap=await get(ref(db,"config"));
+    if(snap.exists()){
+      const cfg=snap.val();
+      if(cfg.nomeVendedor) nomeVendedor=cfg.nomeVendedor;
+      if(cfg.nomeGestor) nomeGestor=cfg.nomeGestor;
+      if(cfg.senhaGestor) senhaGestor=cfg.senhaGestor;
+    }
+  }catch(e){}
+  renderLogin();
+}
+
+// Render login
+function renderLogin(){
+  const div=document.getElementById("lista-perfis");
+  div.innerHTML=`
+    <div class="profile-card" onclick="tentarEntrarVendedor()">
+      <div class="profile-avatar" style="background:#E3F2FD;color:#1565C0">${nomeVendedor.charAt(0).toUpperCase()}</div>
+      <div style="font-size:15px;font-weight:600">${nomeVendedor}</div>
+      <div style="font-size:12px;color:#888;margin-top:2px">Vendedor</div>
+    </div>
+    <div class="profile-card" onclick="tentarEntrarGestor()">
+      <div class="profile-avatar" style="background:#FFF3E0;color:#E8620A">${nomeGestor.charAt(0).toUpperCase()}</div>
+      <div style="font-size:15px;font-weight:600">${nomeGestor}</div>
+      <div style="font-size:12px;color:#888;margin-top:2px">Gestor 🔐</div>
+    </div>`;
+}
+
+// Produtos padrão
+const PRODUTOS_PADRAO={
+  "Naturais":["Pimenta calabresa","Anis estrelado","Colorau","Erva doce","Orégano","Açafrão","Curry","Louro","Pimenta do reino","Cravo","Cominho","Páprica doce","Páprica defumada","Páprica picante","Canela em pau","Canela em pó","Alho frito","Sal rosa"],
+  "Compostos":["Chimichurri","Edu Guedes","Ana Maria","Salsa, cebola e alho","Lemon pepper","Tempero para feijão","Pega marido","Cominho com pimenta","Caldo de galinha","Caldo de carne","Tempero baiano"],
+  "Chás":["Boldo","Camomila","Erva doce"],
+  "Outros":["Bicarbonato"]
 };
+const CLIENTES_PADRAO=["Mercadinho do João","Restaurante Sabor Bom","Feira da Saudade","Mercearia Boa Vista","Lanchonete Central"];
 
-const CLIENTES_PADRAO = ["Mercadinho do João","Restaurante Sabor Bom","Feira da Saudade","Mercearia Boa Vista","Lanchonete Central"];
+onValue(ref(db,"produtos"),snap=>{
+  if(!snap.exists()){Object.entries(PRODUTOS_PADRAO).forEach(([cat,lista])=>lista.forEach(nome=>push(ref(db,"produtos"),{nome,categoria:cat})));}
+},{onlyOnce:true});
+onValue(ref(db,"clientes"),snap=>{
+  if(!snap.exists()){CLIENTES_PADRAO.forEach(nome=>push(ref(db,"clientes"),{nome,tipo:"",bairro:"",tel:"",resp:""}));}
+},{onlyOnce:true});
 
-function hojeInicio() { const d=new Date();d.setHours(0,0,0,0);return d.getTime(); }
-function fmt(v) { return "R$ "+v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,"."); }
-function badge(p) { const m={PIX:"badge-pix",Dinheiro:"badge-din",Fiado:"badge-fiad","Cartão":"badge-cart"};return `<span class="badge ${m[p]||''}">${p}</span>`; }
-function toast(msg) { const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2500); }
-
-document.getElementById("levi-data").textContent = new Date().toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"long"});
-
-// Inicializar dados padrão no Firebase se vazios
-onValue(ref(db,"produtos"), snap=>{
-  if(!snap.exists()) {
-    Object.entries(PRODUTOS_PADRAO).forEach(([cat, lista]) => {
-      lista.forEach(nome => push(ref(db,"produtos"), {nome, categoria:cat, ativo:true}));
-    });
-  }
-}, {onlyOnce:true});
-
-onValue(ref(db,"clientes"), snap=>{
-  if(!snap.exists()) {
-    CLIENTES_PADRAO.forEach(nome => push(ref(db,"clientes"), {nome, tipo:"", bairro:"", tel:"", resp:""}));
-  }
-}, {onlyOnce:true});
-
-// Escutar clientes em tempo real
-onValue(ref(db,"clientes"), snap=>{
-  clientes = {};
-  if(snap.exists()) snap.forEach(c=>{ clientes[c.key]=c.val(); });
+onValue(ref(db,"clientes"),snap=>{
+  clientes={};
+  if(snap.exists()) snap.forEach(c=>{clientes[c.key]=c.val();});
   atualizarSelectClientes();
-  renderWClientes();
+  renderGClientes();
+  renderRotas();
 });
 
-// Escutar produtos em tempo real
-onValue(ref(db,"produtos"), snap=>{
-  produtos = {};
-  if(snap.exists()) snap.forEach(p=>{ produtos[p.key]=p.val(); });
+onValue(ref(db,"produtos"),snap=>{
+  produtos={};
+  if(snap.exists()) snap.forEach(p=>{produtos[p.key]=p.val();});
   renderSabores();
-  renderWProdutos();
+  renderGProdutos();
 });
 
-function atualizarSelectClientes() {
-  const sel = document.getElementById("sel-cliente");
-  sel.innerHTML = '<option value="">Selecione o cliente...</option>';
+function atualizarSelectClientes(){
+  const sel=document.getElementById("sel-cliente");
+  sel.innerHTML='<option value="">Selecione o cliente...</option>';
   Object.entries(clientes).sort((a,b)=>a[1].nome.localeCompare(b[1].nome)).forEach(([k,c])=>{
-    const o=document.createElement("option"); o.value=c.nome; o.textContent=c.nome; sel.appendChild(o);
+    const o=document.createElement("option");o.value=c.nome;o.textContent=c.nome;sel.appendChild(o);
   });
 }
 
-function renderSabores() {
-  const grid = document.getElementById("sabores-grid");
-  grid.innerHTML = "";
-  const porCat = {};
-  Object.entries(produtos).forEach(([k,p])=>{
-    if(!porCat[p.categoria]) porCat[p.categoria]=[];
-    porCat[p.categoria].push({key:k,...p});
-  });
+function renderSabores(){
+  const grid=document.getElementById("sabores-grid");grid.innerHTML="";
+  const porCat={};
+  Object.entries(produtos).forEach(([k,p])=>{if(!porCat[p.categoria])porCat[p.categoria]=[];porCat[p.categoria].push({key:k,...p});});
   ["Naturais","Compostos","Chás","Outros"].forEach(cat=>{
-    if(!porCat[cat]||!porCat[cat].length) return;
+    if(!porCat[cat]||!porCat[cat].length)return;
     const h=document.createElement("div");h.className="cat-header";h.textContent=cat;grid.appendChild(h);
     porCat[cat].forEach(p=>{
       const b=document.createElement("button");b.className="sabor-btn";b.textContent=p.nome;
-      b.onclick=()=>toggleSabor(p.nome,b); grid.appendChild(b);
+      b.onclick=()=>toggleSabor(p.nome,b);grid.appendChild(b);
     });
   });
 }
 
+function renderRotas(){
+  const lista=Object.values(clientes).sort((a,b)=>a.nome.localeCompare(b.nome));
+  const rota=gerarRota(lista);
+  const idxHoje=diaHojeIdx();
+
+  // Rota do vendedor (só dia de hoje)
+  const rotaDiv=document.getElementById("rota-lista");
+  const labelDiv=document.getElementById("rota-hoje-label");
+  if(rotaDiv){
+    rotaDiv.innerHTML="";
+    if(idxHoje<0){
+      labelDiv.textContent="Hoje não é dia de trabalho.";
+      rotaDiv.innerHTML='<div class="empty">Sem rota hoje.</div>';
+    } else {
+      const diaAtual=DIAS_SEMANA[idxHoje];
+      const clientesHoje=rota[diaAtual]||[];
+      labelDiv.textContent=`${diaAtual} — ${clientesHoje.length} cliente${clientesHoje.length!==1?'s':''}`;
+      if(!clientesHoje.length){rotaDiv.innerHTML='<div class="empty">Nenhum cliente para hoje.</div>';}
+      else{
+        clientesHoje.forEach((c,i)=>{
+          const div=document.createElement("div");div.className="list-item";
+          div.innerHTML=`<div><div style="font-weight:600">${i+1}. ${c.nome}</div>${c.bairro?`<div style="font-size:11px;color:#888">${c.bairro}</div>`:""}</div><span style="font-size:11px;background:#E8F5E9;color:#2E7D32;padding:3px 8px;border-radius:10px;font-weight:600">${c.tipo||"Cliente"}</span>`;
+          rotaDiv.appendChild(div);
+        });
+      }
+    }
+  }
+
+  // Rota completa do gestor
+  const gRotaDiv=document.getElementById("g-rota-lista");
+  if(gRotaDiv){
+    gRotaDiv.innerHTML="";
+    DIAS_SEMANA.forEach(dia=>{
+      const clientesDia=rota[dia]||[];
+      const div=document.createElement("div");div.className="rota-dia";
+      div.innerHTML=`<div class="rota-dia-header">📅 ${dia} <span style="font-size:11px;color:#888;font-weight:400">${clientesDia.length} clientes</span></div>`;
+      if(!clientesDia.length){div.innerHTML+='<div style="font-size:12px;color:#aaa">Nenhum cliente</div>';}
+      else{clientesDia.forEach((c,i)=>{div.innerHTML+=`<div class="rota-cliente">${i+1}. ${c.nome}${c.bairro?' · '+c.bairro:''}</div>`;});}
+      gRotaDiv.appendChild(div);
+    });
+  }
+}
+
 // Navegação
-window.entrar = function(p) {
+window.tentarEntrarVendedor=function(){
+  document.getElementById("avatar-vendedor").textContent=nomeVendedor.charAt(0).toUpperCase();
+  document.getElementById("nome-vendedor-top").textContent=`${nomeVendedor} — Vendedor`;
+  document.getElementById("vendedor-data").textContent=new Date().toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"long"});
   document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
-  document.getElementById("screen-"+p).classList.add("active");
-  if(p==="wendell") escutarVendas();
-  if(p==="levi") escutarLeviVendas();
+  document.getElementById("screen-vendedor").classList.add("active");
+  escutarVendasVendedor();
 };
-window.voltar = function() {
+
+window.tentarEntrarGestor=function(){
+  document.getElementById("senha-overlay").style.display="flex";
+  document.getElementById("senha-input").value="";
+  document.getElementById("senha-erro").textContent="";
+  setTimeout(()=>document.getElementById("senha-input").focus(),100);
+};
+
+window.verificarSenha=function(){
+  const entrada=document.getElementById("senha-input").value;
+  if(entrada===senhaGestor){
+    document.getElementById("senha-overlay").style.display="none";
+    document.getElementById("avatar-gestor").textContent=nomeGestor.charAt(0).toUpperCase();
+    document.getElementById("nome-gestor-top").textContent=`${nomeGestor} — Gestor`;
+    document.getElementById("cfg-vendedor").value=nomeVendedor;
+    document.getElementById("cfg-gestor").value=nomeGestor;
+    document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+    document.getElementById("screen-gestor").classList.add("active");
+    escutarVendasGestor();
+  } else {
+    document.getElementById("senha-erro").textContent="Senha incorreta. Tente novamente.";
+    document.getElementById("senha-input").value="";
+  }
+};
+
+window.fecharSenha=function(){document.getElementById("senha-overlay").style.display="none";};
+window.voltar=function(){
   document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
   document.getElementById("screen-login").classList.add("active");
 };
-window.leviTab = function(t) {
-  ["registrar","minhas","cliente"].forEach(x=>document.getElementById("levi-"+x).style.display=x===t?"block":"none");
-  document.querySelectorAll("#screen-levi .tab").forEach((el,i)=>el.classList.toggle("active",["registrar","minhas","cliente"][i]===t));
+
+window.vendedorTab=function(t){
+  ["registrar","minhas","rota","cliente"].forEach(x=>document.getElementById("v-"+x).style.display=x===t?"block":"none");
+  document.querySelectorAll("#screen-vendedor .tab").forEach((el,i)=>el.classList.toggle("active",["registrar","minhas","rota","cliente"][i]===t));
+  if(t==="rota") renderRotas();
 };
-window.wendellTab = function(t) {
-  ["vendas","clientes","produtos"].forEach(x=>document.getElementById("w-"+x).style.display=x===t?"block":"none");
-  document.querySelectorAll("#screen-wendell .tab").forEach((el,i)=>el.classList.toggle("active",["vendas","clientes","produtos"][i]===t));
+
+window.gestorTab=function(t){
+  ["vendas","rota","clientes","produtos","config"].forEach(x=>document.getElementById("g-"+x).style.display=x===t?"block":"none");
+  document.querySelectorAll("#screen-gestor .tab").forEach((el,i)=>el.classList.toggle("active",["vendas","rota","clientes","produtos","config"][i]===t));
+  if(t==="rota") renderRotas();
 };
 
 // Sabores
-window.toggleSabor = function(nome,btn) {
+window.toggleSabor=function(nome,btn){
   if(itens[nome]){delete itens[nome];btn.classList.remove("selected");}
   else{itens[nome]=1;btn.classList.add("selected");}
   renderPedido();
 };
-window.mudarQtd = function(nome,d) { itens[nome]=Math.max(1,(itens[nome]||1)+d); renderPedido(); };
-window.selPagto = function(el,val) {
+window.mudarQtd=function(nome,d){itens[nome]=Math.max(1,(itens[nome]||1)+d);renderPedido();};
+window.selPagto=function(el,val){
   document.querySelectorAll(".pagto-btn").forEach(b=>b.classList.remove("selected"));
-  el.classList.add("selected"); pagamento=val; checkBtn();
+  el.classList.add("selected");pagamento=val;checkBtn();
 };
 
-function renderPedido() {
+function renderPedido(){
   const keys=Object.keys(itens);
   document.getElementById("card-pedido").style.display=keys.length?"block":"none";
   document.getElementById("card-pagto").style.display=keys.length?"block":"none";
-  const list=document.getElementById("itens-list"); list.innerHTML="";
+  const list=document.getElementById("itens-list");list.innerHTML="";
   keys.forEach(nome=>{
     const row=document.createElement("div");row.className="item-row";
     row.innerHTML=`<span class="item-nome">${nome}</span><div style="display:flex;align-items:center;gap:6px"><button class="qtd-btn" onclick="mudarQtd('${nome}',-1)">−</button><span class="qtd-num">${itens[nome]}</span><button class="qtd-btn" onclick="mudarQtd('${nome}',1)">+</button></div>`;
@@ -359,91 +505,99 @@ function renderPedido() {
   checkBtn();
 }
 
-function checkBtn() {
+function checkBtn(){
   const ok=document.getElementById("sel-cliente").value&&Object.keys(itens).length&&pagamento;
   document.getElementById("btn-confirmar").disabled=!ok;
 }
 document.getElementById("sel-cliente").addEventListener("change",checkBtn);
 
-// Confirmar venda
-window.confirmarVenda = async function() {
+window.confirmarVenda=async function(){
   const btn=document.getElementById("btn-confirmar");
-  btn.disabled=true; btn.textContent="Salvando...";
+  btn.disabled=true;btn.textContent="Salvando...";
   const cliente=document.getElementById("sel-cliente").value;
   const totalCartelas=Object.values(itens).reduce((a,b)=>a+b,0);
   const venda={cliente,itens:{...itens},pagamento,totalCartelas,totalVal:totalCartelas*PRECO,
-    hora:new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"}),timestamp:Date.now(),vendedor:"Levi"};
-  try {
+    hora:new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"}),
+    timestamp:Date.now(),vendedor:nomeVendedor};
+  try{
     await push(ref(db,"vendas"),venda);
     toast("✅ Venda registrada!");
-    itens={}; pagamento="";
+    itens={};pagamento="";
     document.getElementById("sel-cliente").value="";
     document.querySelectorAll(".sabor-btn.selected").forEach(b=>b.classList.remove("selected"));
     document.querySelectorAll(".pagto-btn.selected").forEach(b=>b.classList.remove("selected"));
-    renderPedido(); leviTab("minhas");
-  } catch(e) { toast("❌ Erro ao salvar."); }
+    renderPedido();vendedorTab("minhas");
+  }catch(e){toast("❌ Erro ao salvar.");}
   btn.textContent="Confirmar venda";
 };
 
-// Novo cliente pelo Levi
-window.salvarNovoCliente = async function() {
+window.salvarNovoCliente=async function(){
   const nome=document.getElementById("nc-nome").value.trim();
-  if(!nome){toast("⚠️ Informe o nome do cliente");return;}
-  const novoCliente={
-    nome, resp:document.getElementById("nc-resp").value.trim(),
+  if(!nome){toast("⚠️ Informe o nome");return;}
+  await push(ref(db,"clientes"),{nome,
+    resp:document.getElementById("nc-resp").value.trim(),
     tel:document.getElementById("nc-tel").value.trim(),
     bairro:document.getElementById("nc-bairro").value.trim(),
     tipo:document.getElementById("nc-tipo").value,
-    cadastradoPor:"Levi", timestamp:Date.now()
-  };
-  try {
-    await push(ref(db,"clientes"),novoCliente);
-    toast("✅ Cliente cadastrado!");
-    ["nc-nome","nc-resp","nc-tel","nc-bairro"].forEach(id=>document.getElementById(id).value="");
-    document.getElementById("nc-tipo").value="";
-    leviTab("registrar");
-  } catch(e) { toast("❌ Erro ao salvar."); }
+    cadastradoPor:nomeVendedor,timestamp:Date.now()});
+  toast("✅ Cliente cadastrado!");
+  ["nc-nome","nc-resp","nc-tel","nc-bairro"].forEach(id=>document.getElementById(id).value="");
+  document.getElementById("nc-tipo").value="";
+  vendedorTab("registrar");
 };
 
-// Wendell — add cliente
-window.wendellAddCliente = async function() {
+window.gestorAddCliente=async function(){
   const nome=document.getElementById("w-nc-nome").value.trim();
   if(!nome){toast("⚠️ Informe o nome");return;}
   await push(ref(db,"clientes"),{nome,tipo:"",bairro:"",tel:"",resp:""});
-  document.getElementById("w-nc-nome").value="";
-  toast("✅ Cliente adicionado!");
+  document.getElementById("w-nc-nome").value="";toast("✅ Cliente adicionado!");
 };
 
-// Wendell — add produto
-window.wendellAddProduto = async function() {
+window.gestorAddProduto=async function(){
   const nome=document.getElementById("w-np-nome").value.trim();
   const categoria=document.getElementById("w-np-cat").value;
   if(!nome||!categoria){toast("⚠️ Preencha nome e categoria");return;}
   await push(ref(db,"produtos"),{nome,categoria,ativo:true});
-  document.getElementById("w-np-nome").value="";
-  document.getElementById("w-np-cat").value="";
+  document.getElementById("w-np-nome").value="";document.getElementById("w-np-cat").value="";
   toast("✅ Produto adicionado!");
 };
 
-// Remover cliente
-window.removerCliente = async function(key) {
-  if(!confirm("Remover este cliente?")) return;
-  await remove(ref(db,"clientes/"+key));
-  toast("🗑️ Cliente removido");
+window.removerCliente=async function(key){
+  if(!confirm("Remover este cliente?"))return;
+  await remove(ref(db,"clientes/"+key));toast("🗑️ Cliente removido");
+};
+window.removerProduto=async function(key){
+  if(!confirm("Remover este produto?"))return;
+  await remove(ref(db,"produtos/"+key));toast("🗑️ Produto removido");
 };
 
-// Remover produto
-window.removerProduto = async function(key) {
-  if(!confirm("Remover este produto?")) return;
-  await remove(ref(db,"produtos/"+key));
-  toast("🗑️ Produto removido");
+window.salvarNomes=async function(){
+  const v=document.getElementById("cfg-vendedor").value.trim();
+  const g=document.getElementById("cfg-gestor").value.trim();
+  if(!v||!g){toast("⚠️ Preencha os dois nomes");return;}
+  await set(ref(db,"config/nomeVendedor"),v);
+  await set(ref(db,"config/nomeGestor"),g);
+  nomeVendedor=v;nomeGestor=g;
+  renderLogin();toast("✅ Nomes atualizados!");
 };
 
-function renderWClientes() {
-  const div=document.getElementById("w-lista-clientes");
-  if(!div) return;
+window.alterarSenha=async function(){
+  const atual=document.getElementById("cfg-senha-atual").value;
+  const nova=document.getElementById("cfg-senha-nova").value;
+  if(atual!==senhaGestor){toast("❌ Senha atual incorreta");return;}
+  if(nova.length<4){toast("⚠️ Nova senha muito curta");return;}
+  await set(ref(db,"config/senhaGestor"),nova);
+  senhaGestor=nova;
+  document.getElementById("cfg-senha-atual").value="";
+  document.getElementById("cfg-senha-nova").value="";
+  toast("✅ Senha alterada!");
+};
+
+function renderGClientes(){
+  const div=document.getElementById("g-lista-clientes");
+  if(!div)return;
   const lista=Object.entries(clientes).sort((a,b)=>a[1].nome.localeCompare(b[1].nome));
-  if(!lista.length){div.innerHTML='<div class="empty">Nenhum cliente cadastrado.</div>';return;}
+  if(!lista.length){div.innerHTML='<div class="empty">Nenhum cliente.</div>';return;}
   div.innerHTML="";
   lista.forEach(([k,c])=>{
     const item=document.createElement("div");item.className="list-item";
@@ -452,35 +606,31 @@ function renderWClientes() {
   });
 }
 
-function renderWProdutos() {
-  const div=document.getElementById("w-lista-produtos");
-  if(!div) return;
+function renderGProdutos(){
+  const div=document.getElementById("g-lista-produtos");
+  if(!div)return;
   const porCat={};
-  Object.entries(produtos).forEach(([k,p])=>{
-    if(!porCat[p.categoria]) porCat[p.categoria]=[];
-    porCat[p.categoria].push({key:k,...p});
-  });
+  Object.entries(produtos).forEach(([k,p])=>{if(!porCat[p.categoria])porCat[p.categoria]=[];porCat[p.categoria].push({key:k,...p});});
   div.innerHTML="";
   ["Naturais","Compostos","Chás","Outros"].forEach(cat=>{
-    if(!porCat[cat]||!porCat[cat].length) return;
+    if(!porCat[cat]||!porCat[cat].length)return;
     const h=document.createElement("div");h.style.cssText="font-size:11px;font-weight:700;color:#aaa;text-transform:uppercase;margin:12px 0 6px";h.textContent=cat;div.appendChild(h);
     porCat[cat].forEach(p=>{
       const item=document.createElement("div");item.className="list-item";
-      item.innerHTML=`<span style="font-size:14px">${p.nome}</span><button class="btn-danger" onclick="removerProduto('${p.key}')">Remover</button>`;
+      item.innerHTML=`<span>${p.nome}</span><button class="btn-danger" onclick="removerProduto('${p.key}')">Remover</button>`;
       div.appendChild(item);
     });
   });
-  if(!div.children.length) div.innerHTML='<div class="empty">Nenhum produto cadastrado.</div>';
+  if(!div.children.length)div.innerHTML='<div class="empty">Nenhum produto.</div>';
 }
 
-// Escutar vendas — Levi
-function escutarLeviVendas() {
+function escutarVendasVendedor(){
   const q=query(ref(db,"vendas"),orderByChild("timestamp"),startAt(hojeInicio()));
   onValue(q,snap=>{
     const vendas=[];snap.forEach(c=>vendas.unshift(c.val()));
-    const lista=document.getElementById("levi-lista");
-    document.getElementById("levi-kpi-v").textContent=vendas.length;
-    document.getElementById("levi-kpi-c").textContent=vendas.reduce((a,v)=>a+v.totalCartelas,0);
+    document.getElementById("v-kpi-v").textContent=vendas.length;
+    document.getElementById("v-kpi-c").textContent=vendas.reduce((a,v)=>a+v.totalCartelas,0);
+    const lista=document.getElementById("v-lista-vendas");
     if(!vendas.length){lista.innerHTML='<div class="empty">Nenhuma venda ainda hoje.</div>';return;}
     lista.innerHTML="";
     vendas.forEach(v=>{
@@ -492,19 +642,17 @@ function escutarLeviVendas() {
   });
 }
 
-// Escutar vendas — Wendell
-function escutarVendas() {
+function escutarVendasGestor(){
   const q=query(ref(db,"vendas"),orderByChild("timestamp"),startAt(hojeInicio()));
   onValue(q,snap=>{
     const vendas=[];snap.forEach(c=>vendas.unshift(c.val()));
     const fat=vendas.reduce((a,v)=>a+v.totalVal,0);
-    const cart=vendas.reduce((a,v)=>a+v.totalCartelas,0);
     document.getElementById("w-v").textContent=vendas.length;
-    document.getElementById("w-c").textContent=cart;
+    document.getElementById("w-c").textContent=vendas.reduce((a,v)=>a+v.totalCartelas,0);
     document.getElementById("w-f").textContent=fmt(fat);
     document.getElementById("w-l").textContent=fmt(fat*MARGEM);
-    const lista=document.getElementById("wendell-lista");
-    if(!vendas.length){lista.innerHTML='<div class="empty">Aguardando vendas do Levi...</div>';return;}
+    const lista=document.getElementById("g-lista-vendas");
+    if(!vendas.length){lista.innerHTML='<div class="empty">Aguardando vendas...</div>';return;}
     lista.innerHTML="";
     vendas.forEach(v=>{
       const s=Object.entries(v.itens).map(([n,q])=>`${q}x ${n}`).join(", ");
@@ -514,6 +662,3 @@ function escutarVendas() {
     });
   });
 }
-</script>
-</body>
-</html>
