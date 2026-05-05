@@ -61,8 +61,6 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
 .rota-cliente:last-child{border-bottom:none}
 .senha-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:200;display:flex;align-items:center;justify-content:center}
 .senha-box{background:#fff;border-radius:20px;padding:2rem;width:90%;max-width:360px;text-align:center}
-.senha-titulo{font-size:18px;font-weight:700;margin-bottom:8px}
-.senha-sub{font-size:13px;color:#888;margin-bottom:20px}
 .senha-input{width:100%;padding:12px;border:2px solid #ddd;border-radius:12px;font-size:18px;text-align:center;letter-spacing:4px;margin-bottom:12px}
 .senha-input:focus{outline:none;border-color:#E8620A}
 .senha-erro{color:#DC2626;font-size:13px;margin-bottom:8px;min-height:20px}
@@ -78,14 +76,25 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
     <div style="font-size:20px;font-weight:700">Nina Temperos</div>
     <div style="font-size:13px;color:#888;margin-top:4px">Quem está acessando?</div>
   </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:1rem 0" id="lista-perfis"><div class="profile-card" onclick="tentarEntrarVendedor()"><div class="profile-avatar" style="background:#E3F2FD;color:#1565C0" id="avatar-login-v">L</div><div style="font-size:15px;font-weight:600" id="label-login-v">Levi</div><div style="font-size:12px;color:#888;margin-top:2px">Vendedor</div></div><div class="profile-card" onclick="tentarEntrarGestor()"><div class="profile-avatar" style="background:#FFF3E0;color:#E8620A" id="avatar-login-g">W</div><div style="font-size:15px;font-weight:600" id="label-login-g">Wendell</div><div style="font-size:12px;color:#888;margin-top:2px">Gestor 🔐</div></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:1rem 0">
+    <div class="profile-card" onclick="tentarEntrarVendedor()">
+      <div class="profile-avatar" style="background:#E3F2FD;color:#1565C0" id="avatar-login-v">L</div>
+      <div style="font-size:15px;font-weight:600" id="label-login-v">Levi</div>
+      <div style="font-size:12px;color:#888;margin-top:2px">Vendedor</div>
+    </div>
+    <div class="profile-card" onclick="tentarEntrarGestor()">
+      <div class="profile-avatar" style="background:#FFF3E0;color:#E8620A" id="avatar-login-g">W</div>
+      <div style="font-size:15px;font-weight:600" id="label-login-g">Wendell</div>
+      <div style="font-size:12px;color:#888;margin-top:2px">Gestor 🔐</div>
+    </div>
+  </div>
 </div>
 
 <!-- VENDEDOR -->
 <div class="screen" id="screen-vendedor">
   <div class="top-bar">
-    <div id="avatar-vendedor" style="width:36px;height:36px;border-radius:50%;background:#E3F2FD;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#1565C0"></div>
-    <div style="flex:1"><div id="nome-vendedor-top" style="font-size:14px;font-weight:600"></div><div style="font-size:12px;color:#888" id="vendedor-data"></div></div>
+    <div id="avatar-vendedor" style="width:36px;height:36px;border-radius:50%;background:#E3F2FD;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#1565C0">L</div>
+    <div style="flex:1"><div id="nome-vendedor-top" style="font-size:14px;font-weight:600">Levi — Vendedor</div><div style="font-size:12px;color:#888" id="vendedor-data"></div></div>
     <button onclick="voltar()" style="background:none;border:none;font-size:12px;color:#aaa;cursor:pointer">Sair</button>
   </div>
   <div class="tab-bar">
@@ -94,7 +103,6 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
     <div class="tab" onclick="vendedorTab('rota')">Rota do dia</div>
     <div class="tab" onclick="vendedorTab('cliente')">+ Cliente</div>
   </div>
-
   <div id="v-registrar">
     <div class="card">
       <div class="section-label">Cliente</div>
@@ -123,7 +131,6 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
     </div>
     <button class="btn-primary" id="btn-confirmar" onclick="confirmarVenda()" disabled>Confirmar venda</button>
   </div>
-
   <div id="v-minhas" style="display:none">
     <div class="kpi-grid">
       <div class="kpi"><div class="kpi-val" id="v-kpi-v">0</div><div class="kpi-label">Vendas hoje</div></div>
@@ -131,7 +138,6 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
     </div>
     <div id="v-lista-vendas"><div class="empty">Nenhuma venda ainda hoje.</div></div>
   </div>
-
   <div id="v-rota" style="display:none">
     <div class="card" style="background:#FFF3E0;border-color:#E8620A44">
       <div style="font-size:13px;font-weight:600;color:#E8620A;margin-bottom:4px">📍 Rota de hoje</div>
@@ -139,7 +145,6 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
     </div>
     <div id="rota-lista"></div>
   </div>
-
   <div id="v-cliente" style="display:none">
     <div class="card">
       <div class="section-label">Cadastrar novo cliente</div>
@@ -160,8 +165,8 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
 <!-- GESTOR -->
 <div class="screen" id="screen-gestor">
   <div class="top-bar">
-    <div id="avatar-gestor" style="width:36px;height:36px;border-radius:50%;background:#FFF3E0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#E8620A"></div>
-    <div style="flex:1"><div id="nome-gestor-top" style="font-size:14px;font-weight:600"></div><div style="font-size:12px;color:#888"><span class="dot-live"></span>Tempo real</div></div>
+    <div id="avatar-gestor" style="width:36px;height:36px;border-radius:50%;background:#FFF3E0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#E8620A">W</div>
+    <div style="flex:1"><div id="nome-gestor-top" style="font-size:14px;font-weight:600">Wendell — Gestor</div><div style="font-size:12px;color:#888"><span class="dot-live"></span>Tempo real</div></div>
     <button onclick="voltar()" style="background:none;border:none;font-size:12px;color:#aaa;cursor:pointer">Sair</button>
   </div>
   <div class="tab-bar">
@@ -171,7 +176,6 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
     <div class="tab" onclick="gestorTab('produtos')">Produtos</div>
     <div class="tab" onclick="gestorTab('config')">Config</div>
   </div>
-
   <div id="g-vendas">
     <div class="kpi-grid">
       <div class="kpi"><div class="kpi-val" id="w-v">0</div><div class="kpi-label">Vendas hoje</div></div>
@@ -181,12 +185,10 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
     </div>
     <div id="g-lista-vendas"><div class="empty">Aguardando vendas...</div></div>
   </div>
-
   <div id="g-rota" style="display:none">
     <div class="section-label" style="margin-bottom:8px">Rota semanal completa</div>
     <div id="g-rota-lista"></div>
   </div>
-
   <div id="g-clientes" style="display:none">
     <div class="card">
       <div class="section-label">Adicionar cliente</div>
@@ -198,7 +200,6 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
     <div class="section-label" style="margin-bottom:8px">Clientes cadastrados</div>
     <div id="g-lista-clientes"><div class="empty">Carregando...</div></div>
   </div>
-
   <div id="g-produtos" style="display:none">
     <div class="card">
       <div class="section-label">Adicionar produto</div>
@@ -212,13 +213,10 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
     <div class="section-label" style="margin-bottom:8px">Produtos cadastrados</div>
     <div id="g-lista-produtos"><div class="empty">Carregando...</div></div>
   </div>
-
   <div id="g-config" style="display:none">
     <div class="card">
       <div class="section-label">Nomes do sistema</div>
-      <div style="font-size:12px;color:#888;margin-bottom:8px">Nome do vendedor (aparece na tela de login)</div>
       <input id="cfg-vendedor" placeholder="Nome do vendedor" style="margin-bottom:8px">
-      <div style="font-size:12px;color:#888;margin-bottom:8px">Nome do gestor</div>
       <input id="cfg-gestor" placeholder="Nome do gestor" style="margin-bottom:12px">
       <button class="btn-primary" onclick="salvarNomes()" style="margin-top:0">Salvar nomes</button>
     </div>
@@ -230,22 +228,20 @@ select:focus,input:focus{outline:none;box-shadow:0 0 0 2px #E8620A44;border-colo
     </div>
   </div>
 </div>
-
 </div>
 
-<!-- MODAL SENHA -->
+<!-- SENHA -->
 <div class="senha-overlay" id="senha-overlay" style="display:none">
   <div class="senha-box">
     <div style="font-size:28px;margin-bottom:8px">🔐</div>
-    <div class="senha-titulo">Área do Gestor</div>
-    <div class="senha-sub">Digite a senha para continuar</div>
+    <div style="font-size:18px;font-weight:700;margin-bottom:8px">Área do Gestor</div>
+    <div style="font-size:13px;color:#888;margin-bottom:20px">Digite a senha para continuar</div>
     <input class="senha-input" type="password" id="senha-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')verificarSenha()">
     <div class="senha-erro" id="senha-erro"></div>
     <button class="btn-primary" onclick="verificarSenha()">Entrar</button>
     <button class="btn-secondary" onclick="fecharSenha()">Cancelar</button>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <script type="module">
@@ -264,87 +260,147 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-
-const PRECO = 10.50, MARGEM = 0.66;
-const DIAS_SEMANA = ["Terça","Quarta","Quinta","Sexta","Sábado"];
-const DIAS_JS = [2,3,4,5,6]; // 0=Dom,1=Seg,2=Ter...
-
+const PRECO=10.50, MARGEM=0.66;
 let itens={}, pagamento="", clientes={}, produtos={};
-let nomeVendedor="Levi", nomeGestor="Wendell";
-let senhaGestor="Well@8852";
+let nomeVendedor="Levi", nomeGestor="Wendell", senhaGestor="Well@8852";
+
+// Rota por bairro
+const ROTA_BAIRROS = {
+  "Terça":   ["Pau Amarelo"],
+  "Quarta":  ["Pau Amarelo"],
+  "Quinta":  ["Janga","Jd. Maranguape","Nossa Senhora da Conceição","Nossa Sra. do Ó","Jaguarana","Mirueira","Maranguape 2"],
+  "Sexta":   ["Rio Doce","Peixinhos","Águas Compridas","Jardim Atlântico","Alto Nova Olinda","Fragoso","Tabajara","Passarinho","Ouro Preto"],
+  "Sábado":  ["Janga","Nossa Sra. do Ó","Jaguarana","Mirueira","Maranguape 2"]
+};
+
+// Clientes base — COD usado para dividir Pau Amarelo (1-21=Terça, 22+=Quarta) e Janga (1-33=Quinta, 34+=Sábado)
+const CLIENTES_BASE = [
+  {cod:1,nome:"José Cavalcante",tel:"81998133759",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:2,nome:"Lúcia",tel:"81987305708",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:3,nome:"Barraca do Delegado",tel:"81993009747",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:4,nome:"Silvia",tel:"",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:5,nome:"Paulo",tel:"81997237712",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:6,nome:"Sal da Terra",tel:"81999917084",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:7,nome:"Ednaldo",tel:"81982517658",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:8,nome:"Elizabeth",tel:"81989485591",bairro:"Nossa Senhora da Conceição",cidade:"Paulista"},
+  {cod:9,nome:"Márcia",tel:"81986501353",bairro:"Nossa Senhora da Conceição",cidade:"Paulista"},
+  {cod:10,nome:"Sueli",tel:"81986109811",bairro:"Nossa Senhora da Conceição",cidade:"Paulista"},
+  {cod:11,nome:"Claudia Maria",tel:"81989384630",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:12,nome:"Solange",tel:"81983776315",bairro:"Janga",cidade:"Paulista"},
+  {cod:13,nome:"Socorro",tel:"81983590232",bairro:"Janga",cidade:"Paulista"},
+  {cod:14,nome:"Açogue A Nordestina",tel:"",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:15,nome:"José Geraldo de Araújo",tel:"81996110359",bairro:"Janga",cidade:"Paulista"},
+  {cod:16,nome:"Jane",tel:"81988609846",bairro:"Janga",cidade:"Paulista"},
+  {cod:17,nome:"Teresa",tel:"81983668219",bairro:"Janga",cidade:"Paulista"},
+  {cod:18,nome:"Kennia",tel:"81993556759",bairro:"Janga",cidade:"Paulista"},
+  {cod:19,nome:"Matheus",tel:"81999267185",bairro:"Janga",cidade:"Paulista"},
+  {cod:20,nome:"Machados Conveniência Elton",tel:"81975041802",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:21,nome:"Adriana de Lima",tel:"81988403024",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:22,nome:"Xepa da Carmen",tel:"81999397103",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:23,nome:"Josivaldo Galego",tel:"81973032307",bairro:"Janga",cidade:"Paulista"},
+  {cod:24,nome:"Ana Paula",tel:"81987351123",bairro:"Janga",cidade:"Paulista"},
+  {cod:25,nome:"Ilma Sampaio",tel:"81995284118",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:26,nome:"Cantinho da Márcia",tel:"81989544606",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:27,nome:"Cássia",tel:"81988351427",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:28,nome:"Coaracir",tel:"81997985497",bairro:"Jd. Maranguape",cidade:"Paulista"},
+  {cod:29,nome:"Marcos",tel:"81985013855",bairro:"Nossa Senhora da Conceição",cidade:"Paulista"},
+  {cod:30,nome:"José Marcos",tel:"81985661120",bairro:"Janga",cidade:"Paulista"},
+  {cod:31,nome:"Marcelo",tel:"81986648829",bairro:"Janga",cidade:"Paulista"},
+  {cod:32,nome:"Cícera Maria",tel:"81985175970",bairro:"Janga",cidade:"Paulista"},
+  {cod:33,nome:"Flávio da Cunha",tel:"81994839448",bairro:"Janga",cidade:"Paulista"},
+  {cod:34,nome:"Junior",tel:"81997614464",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:35,nome:"Neide",tel:"81988965807",bairro:"Jd. Maranguape",cidade:"Paulista"},
+  {cod:36,nome:"Josilene – Jô Variedades",tel:"81985961308",bairro:"Jd. Maranguape",cidade:"Paulista"},
+  {cod:37,nome:"Ivanilton",tel:"81998925100",bairro:"Rio Doce",cidade:"Olinda"},
+  {cod:38,nome:"Angelita Amaral",tel:"81997042928",bairro:"Mirueira",cidade:"Paulista"},
+  {cod:39,nome:"Conceição",tel:"81995417492",bairro:"Rio Doce",cidade:"Olinda"},
+  {cod:40,nome:"Junior (Janga)",tel:"81989625078",bairro:"Janga",cidade:"Paulista"},
+  {cod:41,nome:"Vicente",tel:"81996141547",bairro:"Jardim Atlântico",cidade:"Olinda"},
+  {cod:42,nome:"Erika",tel:"81987989039",bairro:"Maranguape 2",cidade:"Paulista"},
+  {cod:43,nome:"Fabio Mercadinho Boiadeiro",tel:"81996647206",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:44,nome:"Roseane Ferreira da Silva",tel:"81987866902",bairro:"Alto Nova Olinda",cidade:"Olinda"},
+  {cod:45,nome:"Ana Eliria",tel:"81989209381",bairro:"Águas Compridas",cidade:"Olinda"},
+  {cod:46,nome:"Cosme Nascimento",tel:"81983077592",bairro:"Águas Compridas",cidade:"Olinda"},
+  {cod:47,nome:"Givanildo Império do Lauro",tel:"81998636880",bairro:"Águas Compridas",cidade:"Olinda"},
+  {cod:48,nome:"Nalva Maria",tel:"81995595101",bairro:"Águas Compridas",cidade:"Olinda"},
+  {cod:49,nome:"Ronaldo",tel:"81983540149",bairro:"Fragoso",cidade:"Olinda"},
+  {cod:50,nome:"Barraca Davi",tel:"81981315533",bairro:"Peixinhos",cidade:"Olinda"},
+  {cod:51,nome:"Miguel Mercadinho Preço Baixo",tel:"81983553217",bairro:"Rio Doce",cidade:"Olinda"},
+  {cod:52,nome:"Rosinaide",tel:"",bairro:"Tabajara",cidade:"Olinda"},
+  {cod:53,nome:"Itamar",tel:"81991242277",bairro:"Passarinho",cidade:"Olinda"},
+  {cod:54,nome:"Josafar",tel:"81997230610",bairro:"Jaguarana",cidade:"Paulista"},
+  {cod:55,nome:"Saulo",tel:"81997925130",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:56,nome:"Thiago",tel:"81985449328",bairro:"Nossa Sra. do Ó",cidade:"Paulista"},
+  {cod:57,nome:"Santos",tel:"81988593620",bairro:"Nossa Sra. do Ó",cidade:"Paulista"},
+  {cod:58,nome:"Quitanda da Ninha",tel:"81984121361",bairro:"Nossa Sra. do Ó",cidade:"Paulista"},
+  {cod:59,nome:"Antônio Alves de Almeida",tel:"81988129243",bairro:"Nossa Sra. do Ó",cidade:"Paulista"},
+  {cod:60,nome:"Marcone de Oliveira",tel:"81985106238",bairro:"Nossa Sra. do Ó",cidade:"Paulista"},
+  {cod:61,nome:"Márcia (Av. Gueiros)",tel:"81998689126",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:62,nome:"Armando Marques",tel:"81996848380",bairro:"Janga",cidade:"Paulista"},
+  {cod:63,nome:"Islir da Paz",tel:"81996390407",bairro:"Ouro Preto",cidade:"Olinda"},
+  {cod:64,nome:"José Alcântara",tel:"81984484333",bairro:"Peixinhos",cidade:"Olinda"},
+  {cod:65,nome:"Mari",tel:"81996881226",bairro:"Janga",cidade:"Paulista"},
+  {cod:66,nome:"Enoque Bezerra",tel:"81995153432",bairro:"Janga",cidade:"Paulista"},
+  {cod:67,nome:"Denis Padaria",tel:"87991846043",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:68,nome:"Marcone",tel:"81985106238",bairro:"Pau Amarelo",cidade:"Paulista"},
+  {cod:69,nome:"Girlane",tel:"81988534386",bairro:"Rio Doce",cidade:"Olinda"},
+  {cod:70,nome:"Anderson",tel:"81988900681",bairro:"Rio Doce",cidade:"Olinda"},
+  {cod:71,nome:"Angelita (Rio Doce)",tel:"81997042928",bairro:"Rio Doce",cidade:"Olinda"},
+  {cod:72,nome:"Mercearia do Riva",tel:"81989883974",bairro:"Peixinhos",cidade:"Olinda"},
+  {cod:73,nome:"Granja Renascer Aldimar",tel:"81996387462",bairro:"Peixinhos",cidade:"Olinda"},
+  {cod:74,nome:"Sheila",tel:"81986514221",bairro:"Rio Doce",cidade:"Olinda"},
+  {cod:75,nome:"Robson WR",tel:"81993992953",bairro:"Jaguarana",cidade:"Paulista"},
+  {cod:76,nome:"Jair Padaria",tel:"81981691140",bairro:"Pau Amarelo",cidade:"Paulista"},
+];
+
+// Lógica de rota por bairro + COD para dividir Pau Amarelo e Janga
+function diaDoCliente(c){
+  if(c.bairro==="Pau Amarelo") return c.cod<=21?"Terça":"Quarta";
+  if(c.bairro==="Janga") return c.cod<=33?"Quinta":"Sábado";
+  const mapa={
+    "Nossa Senhora da Conceição":"Quinta",
+    "Jd. Maranguape":"Quinta",
+    "Nossa Sra. do Ó":"Sábado",
+    "Jaguarana":"Sábado",
+    "Mirueira":"Sábado",
+    "Maranguape 2":"Sábado",
+    "Rio Doce":"Sexta",
+    "Peixinhos":"Sexta",
+    "Águas Compridas":"Sexta",
+    "Jardim Atlântico":"Sexta",
+    "Alto Nova Olinda":"Sexta",
+    "Fragoso":"Sexta",
+    "Tabajara":"Sexta",
+    "Passarinho":"Sexta",
+    "Ouro Preto":"Sexta",
+  };
+  return mapa[c.bairro]||"Sábado";
+}
+
+const DIAS_SEMANA=["Terça","Quarta","Quinta","Sexta","Sábado"];
+const DIAS_JS=[2,3,4,5,6];
 
 function hojeInicio(){const d=new Date();d.setHours(0,0,0,0);return d.getTime();}
 function fmt(v){return "R$ "+v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,".");}
 function badge(p){const m={PIX:"badge-pix",Dinheiro:"badge-din",Fiado:"badge-fiad","Cartão":"badge-cart"};return `<span class="badge ${m[p]||''}">${p}</span>`;}
 function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2500);}
+function diaHoje(){const d=new Date().getDay();const i=DIAS_JS.indexOf(d);return i>=0?DIAS_SEMANA[i]:null;}
 
-// Dia da semana atual (índice nos dias de trabalho)
-function diaHojeIdx(){
-  const d=new Date().getDay(); // 0=Dom
-  return DIAS_JS.indexOf(d);
-}
-function diaHojeNome(){
-  const idx=diaHojeIdx();
-  return idx>=0?DIAS_SEMANA[idx]:"Hoje";
-}
+// Inicializar Firebase com clientes base
+onValue(ref(db,"clientes"),snap=>{
+  if(!snap.exists()){
+    CLIENTES_BASE.forEach(c=>push(ref(db,"clientes"),c));
+  }
+},{onlyOnce:true});
 
-// Distribuir clientes na rota semanal
-function gerarRota(listaClientes){
-  const total=listaClientes.length;
-  const dias=DIAS_SEMANA.length; // 5 dias
-  const rota={};
-  DIAS_SEMANA.forEach(d=>rota[d]=[]);
-  listaClientes.forEach((c,i)=>{
-    const dia=DIAS_SEMANA[i%dias];
-    rota[dia].push(c);
-  });
-  return rota;
-}
-
-// Carregar config do Firebase
-async function carregarConfig(){
-  try{
-    const snap=await get(ref(db,"config"));
-    if(snap.exists()){
-      const cfg=snap.val();
-      if(cfg.nomeVendedor) nomeVendedor=cfg.nomeVendedor;
-      if(cfg.nomeGestor) nomeGestor=cfg.nomeGestor;
-      if(cfg.senhaGestor) senhaGestor=cfg.senhaGestor;
-    }
-  }catch(e){}
-  renderLogin();
-}
-
-// Render login
-function renderLogin(){
-  const div=document.getElementById("lista-perfis");
-  div.innerHTML=`
-    <div class="profile-card" onclick="tentarEntrarVendedor()">
-      <div class="profile-avatar" style="background:#E3F2FD;color:#1565C0">${nomeVendedor.charAt(0).toUpperCase()}</div>
-      <div style="font-size:15px;font-weight:600">${nomeVendedor}</div>
-      <div style="font-size:12px;color:#888;margin-top:2px">Vendedor</div>
-    </div>
-    <div class="profile-card" onclick="tentarEntrarGestor()">
-      <div class="profile-avatar" style="background:#FFF3E0;color:#E8620A">${nomeGestor.charAt(0).toUpperCase()}</div>
-      <div style="font-size:15px;font-weight:600">${nomeGestor}</div>
-      <div style="font-size:12px;color:#888;margin-top:2px">Gestor 🔐</div>
-    </div>`;
-}
-
-// Produtos padrão
 const PRODUTOS_PADRAO={
   "Naturais":["Pimenta calabresa","Anis estrelado","Colorau","Erva doce","Orégano","Açafrão","Curry","Louro","Pimenta do reino","Cravo","Cominho","Páprica doce","Páprica defumada","Páprica picante","Canela em pau","Canela em pó","Alho frito","Sal rosa"],
   "Compostos":["Chimichurri","Edu Guedes","Ana Maria","Salsa, cebola e alho","Lemon pepper","Tempero para feijão","Pega marido","Cominho com pimenta","Caldo de galinha","Caldo de carne","Tempero baiano"],
   "Chás":["Boldo","Camomila","Erva doce"],
   "Outros":["Bicarbonato"]
 };
-const CLIENTES_PADRAO=["Mercadinho do João","Restaurante Sabor Bom","Feira da Saudade","Mercearia Boa Vista","Lanchonete Central"];
-
 onValue(ref(db,"produtos"),snap=>{
   if(!snap.exists()){Object.entries(PRODUTOS_PADRAO).forEach(([cat,lista])=>lista.forEach(nome=>push(ref(db,"produtos"),{nome,categoria:cat})));}
-},{onlyOnce:true});
-onValue(ref(db,"clientes"),snap=>{
-  if(!snap.exists()){CLIENTES_PADRAO.forEach(nome=>push(ref(db,"clientes"),{nome,tipo:"",bairro:"",tel:"",resp:""}));}
 },{onlyOnce:true});
 
 onValue(ref(db,"clientes"),snap=>{
@@ -354,13 +410,25 @@ onValue(ref(db,"clientes"),snap=>{
   renderGClientes();
   renderRotas();
 });
-
 onValue(ref(db,"produtos"),snap=>{
   produtos={};
   if(snap.exists()) snap.forEach(p=>{produtos[p.key]=p.val();});
   renderSabores();
   renderGProdutos();
 });
+
+async function carregarConfig(){
+  try{
+    const snap=await get(ref(db,"config"));
+    if(snap.exists()){
+      const cfg=snap.val();
+      if(cfg.nomeVendedor){nomeVendedor=cfg.nomeVendedor;document.getElementById("avatar-login-v").textContent=nomeVendedor.charAt(0);document.getElementById("label-login-v").textContent=nomeVendedor;}
+      if(cfg.nomeGestor){nomeGestor=cfg.nomeGestor;document.getElementById("avatar-login-g").textContent=nomeGestor.charAt(0);document.getElementById("label-login-g").textContent=nomeGestor;}
+      if(cfg.senhaGestor) senhaGestor=cfg.senhaGestor;
+    }
+  }catch(e){}
+}
+carregarConfig();
 
 function atualizarSelectClientes(){
   const sel=document.getElementById("sel-cliente");
@@ -385,43 +453,42 @@ function renderSabores(){
 }
 
 function renderRotas(){
-  const lista=Object.values(clientes).sort((a,b)=>a.nome.localeCompare(b.nome));
-  const rota=gerarRota(lista);
-  const idxHoje=diaHojeIdx();
-
-  // Rota do vendedor (só dia de hoje)
+  const hoje=diaHoje();
   const rotaDiv=document.getElementById("rota-lista");
   const labelDiv=document.getElementById("rota-hoje-label");
+  const todosClientes=Object.values(clientes);
+
+  // Rota do vendedor
   if(rotaDiv){
     rotaDiv.innerHTML="";
-    if(idxHoje<0){
+    if(!hoje){
       labelDiv.textContent="Hoje não é dia de trabalho.";
       rotaDiv.innerHTML='<div class="empty">Sem rota hoje.</div>';
     } else {
-      const diaAtual=DIAS_SEMANA[idxHoje];
-      const clientesHoje=rota[diaAtual]||[];
-      labelDiv.textContent=`${diaAtual} — ${clientesHoje.length} cliente${clientesHoje.length!==1?'s':''}`;
+      const clientesHoje=todosClientes.filter(c=>diaDoCliente(c)===hoje).sort((a,b)=>a.nome.localeCompare(b.nome));
+      labelDiv.textContent=`${hoje} — ${clientesHoje.length} cliente${clientesHoje.length!==1?'s':''}`;
       if(!clientesHoje.length){rotaDiv.innerHTML='<div class="empty">Nenhum cliente para hoje.</div>';}
       else{
         clientesHoje.forEach((c,i)=>{
           const div=document.createElement("div");div.className="list-item";
-          div.innerHTML=`<div><div style="font-weight:600">${i+1}. ${c.nome}</div>${c.bairro?`<div style="font-size:11px;color:#888">${c.bairro}</div>`:""}</div><span style="font-size:11px;background:#E8F5E9;color:#2E7D32;padding:3px 8px;border-radius:10px;font-weight:600">${c.tipo||"Cliente"}</span>`;
+          div.innerHTML=`<div><div style="font-weight:600">${i+1}. ${c.nome}</div><div style="font-size:11px;color:#888">${c.bairro} · ${c.cidade||''}</div></div><span style="font-size:11px;background:#E8F5E9;color:#2E7D32;padding:3px 8px;border-radius:10px;font-weight:600">${c.tel?'📞':''}</span>`;
           rotaDiv.appendChild(div);
         });
       }
     }
   }
 
-  // Rota completa do gestor
+  // Rota completa gestor
   const gRotaDiv=document.getElementById("g-rota-lista");
   if(gRotaDiv){
     gRotaDiv.innerHTML="";
     DIAS_SEMANA.forEach(dia=>{
-      const clientesDia=rota[dia]||[];
+      const clientesDia=todosClientes.filter(c=>diaDoCliente(c)===dia).sort((a,b)=>a.nome.localeCompare(b.nome));
       const div=document.createElement("div");div.className="rota-dia";
-      div.innerHTML=`<div class="rota-dia-header">📅 ${dia} <span style="font-size:11px;color:#888;font-weight:400">${clientesDia.length} clientes</span></div>`;
+      const isHoje=dia===hoje;
+      div.innerHTML=`<div class="rota-dia-header">📅 ${dia} ${isHoje?'<span style="background:#E8620A;color:#fff;font-size:10px;padding:2px 6px;border-radius:8px">HOJE</span>':''} <span style="font-size:11px;color:#888;font-weight:400">${clientesDia.length} clientes</span></div>`;
       if(!clientesDia.length){div.innerHTML+='<div style="font-size:12px;color:#aaa">Nenhum cliente</div>';}
-      else{clientesDia.forEach((c,i)=>{div.innerHTML+=`<div class="rota-cliente">${i+1}. ${c.nome}${c.bairro?' · '+c.bairro:''}</div>`;});}
+      else{clientesDia.forEach((c,i)=>{div.innerHTML+=`<div class="rota-cliente">${i+1}. ${c.nome} <span style="color:#aaa;font-size:11px">· ${c.bairro}</span></div>`;});}
       gRotaDiv.appendChild(div);
     });
   }
@@ -429,26 +496,24 @@ function renderRotas(){
 
 // Navegação
 window.tentarEntrarVendedor=function(){
-  document.getElementById("avatar-vendedor").textContent=nomeVendedor.charAt(0).toUpperCase();
+  document.getElementById("avatar-vendedor").textContent=nomeVendedor.charAt(0);
   document.getElementById("nome-vendedor-top").textContent=`${nomeVendedor} — Vendedor`;
   document.getElementById("vendedor-data").textContent=new Date().toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"long"});
   document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
   document.getElementById("screen-vendedor").classList.add("active");
   escutarVendasVendedor();
 };
-
 window.tentarEntrarGestor=function(){
   document.getElementById("senha-overlay").style.display="flex";
   document.getElementById("senha-input").value="";
   document.getElementById("senha-erro").textContent="";
   setTimeout(()=>document.getElementById("senha-input").focus(),100);
 };
-
 window.verificarSenha=function(){
   const entrada=document.getElementById("senha-input").value;
   if(entrada===senhaGestor){
     document.getElementById("senha-overlay").style.display="none";
-    document.getElementById("avatar-gestor").textContent=nomeGestor.charAt(0).toUpperCase();
+    document.getElementById("avatar-gestor").textContent=nomeGestor.charAt(0);
     document.getElementById("nome-gestor-top").textContent=`${nomeGestor} — Gestor`;
     document.getElementById("cfg-vendedor").value=nomeVendedor;
     document.getElementById("cfg-gestor").value=nomeGestor;
@@ -456,30 +521,25 @@ window.verificarSenha=function(){
     document.getElementById("screen-gestor").classList.add("active");
     escutarVendasGestor();
   } else {
-    document.getElementById("senha-erro").textContent="Senha incorreta. Tente novamente.";
+    document.getElementById("senha-erro").textContent="Senha incorreta.";
     document.getElementById("senha-input").value="";
   }
 };
-
 window.fecharSenha=function(){document.getElementById("senha-overlay").style.display="none";};
 window.voltar=function(){
   document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
   document.getElementById("screen-login").classList.add("active");
 };
-
 window.vendedorTab=function(t){
   ["registrar","minhas","rota","cliente"].forEach(x=>document.getElementById("v-"+x).style.display=x===t?"block":"none");
   document.querySelectorAll("#screen-vendedor .tab").forEach((el,i)=>el.classList.toggle("active",["registrar","minhas","rota","cliente"][i]===t));
   if(t==="rota") renderRotas();
 };
-
 window.gestorTab=function(t){
   ["vendas","rota","clientes","produtos","config"].forEach(x=>document.getElementById("g-"+x).style.display=x===t?"block":"none");
   document.querySelectorAll("#screen-gestor .tab").forEach((el,i)=>el.classList.toggle("active",["vendas","rota","clientes","produtos","config"][i]===t));
   if(t==="rota") renderRotas();
 };
-
-// Sabores
 window.toggleSabor=function(nome,btn){
   if(itens[nome]){delete itens[nome];btn.classList.remove("selected");}
   else{itens[nome]=1;btn.classList.add("selected");}
@@ -490,7 +550,6 @@ window.selPagto=function(el,val){
   document.querySelectorAll(".pagto-btn").forEach(b=>b.classList.remove("selected"));
   el.classList.add("selected");pagamento=val;checkBtn();
 };
-
 function renderPedido(){
   const keys=Object.keys(itens);
   document.getElementById("card-pedido").style.display=keys.length?"block":"none";
@@ -505,7 +564,6 @@ function renderPedido(){
   document.getElementById("total-val").textContent="R$ "+total.toFixed(2).replace(".",",");
   checkBtn();
 }
-
 function checkBtn(){
   const ok=document.getElementById("sel-cliente").value&&Object.keys(itens).length&&pagamento;
   document.getElementById("btn-confirmar").disabled=!ok;
@@ -517,11 +575,9 @@ window.confirmarVenda=async function(){
   btn.disabled=true;btn.textContent="Salvando...";
   const cliente=document.getElementById("sel-cliente").value;
   const totalCartelas=Object.values(itens).reduce((a,b)=>a+b,0);
-  const venda={cliente,itens:{...itens},pagamento,totalCartelas,totalVal:totalCartelas*PRECO,
-    hora:new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"}),
-    timestamp:Date.now(),vendedor:nomeVendedor};
   try{
-    await push(ref(db,"vendas"),venda);
+    await push(ref(db,"vendas"),{cliente,itens:{...itens},pagamento,totalCartelas,totalVal:totalCartelas*PRECO,
+      hora:new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"}),timestamp:Date.now(),vendedor:nomeVendedor});
     toast("✅ Venda registrada!");
     itens={};pagamento="";
     document.getElementById("sel-cliente").value="";
@@ -531,85 +587,63 @@ window.confirmarVenda=async function(){
   }catch(e){toast("❌ Erro ao salvar.");}
   btn.textContent="Confirmar venda";
 };
-
 window.salvarNovoCliente=async function(){
   const nome=document.getElementById("nc-nome").value.trim();
   if(!nome){toast("⚠️ Informe o nome");return;}
-  await push(ref(db,"clientes"),{nome,
-    resp:document.getElementById("nc-resp").value.trim(),
-    tel:document.getElementById("nc-tel").value.trim(),
-    bairro:document.getElementById("nc-bairro").value.trim(),
-    tipo:document.getElementById("nc-tipo").value,
-    cadastradoPor:nomeVendedor,timestamp:Date.now()});
+  await push(ref(db,"clientes"),{nome,resp:document.getElementById("nc-resp").value.trim(),
+    tel:document.getElementById("nc-tel").value.trim(),bairro:document.getElementById("nc-bairro").value.trim(),
+    tipo:document.getElementById("nc-tipo").value,cadastradoPor:nomeVendedor,timestamp:Date.now()});
   toast("✅ Cliente cadastrado!");
   ["nc-nome","nc-resp","nc-tel","nc-bairro"].forEach(id=>document.getElementById(id).value="");
-  document.getElementById("nc-tipo").value="";
-  vendedorTab("registrar");
+  document.getElementById("nc-tipo").value="";vendedorTab("registrar");
 };
-
 window.gestorAddCliente=async function(){
   const nome=document.getElementById("w-nc-nome").value.trim();
   if(!nome){toast("⚠️ Informe o nome");return;}
   await push(ref(db,"clientes"),{nome,tipo:"",bairro:"",tel:"",resp:""});
-  document.getElementById("w-nc-nome").value="";toast("✅ Cliente adicionado!");
+  document.getElementById("w-nc-nome").value="";toast("✅ Adicionado!");
 };
-
 window.gestorAddProduto=async function(){
   const nome=document.getElementById("w-np-nome").value.trim();
   const categoria=document.getElementById("w-np-cat").value;
   if(!nome||!categoria){toast("⚠️ Preencha nome e categoria");return;}
-  await push(ref(db,"produtos"),{nome,categoria,ativo:true});
-  document.getElementById("w-np-nome").value="";document.getElementById("w-np-cat").value="";
-  toast("✅ Produto adicionado!");
+  await push(ref(db,"produtos"),{nome,categoria});
+  document.getElementById("w-np-nome").value="";document.getElementById("w-np-cat").value="";toast("✅ Adicionado!");
 };
-
-window.removerCliente=async function(key){
-  if(!confirm("Remover este cliente?"))return;
-  await remove(ref(db,"clientes/"+key));toast("🗑️ Cliente removido");
-};
-window.removerProduto=async function(key){
-  if(!confirm("Remover este produto?"))return;
-  await remove(ref(db,"produtos/"+key));toast("🗑️ Produto removido");
-};
-
+window.removerCliente=async function(key){if(!confirm("Remover?"))return;await remove(ref(db,"clientes/"+key));toast("🗑️ Removido");};
+window.removerProduto=async function(key){if(!confirm("Remover?"))return;await remove(ref(db,"produtos/"+key));toast("🗑️ Removido");};
 window.salvarNomes=async function(){
   const v=document.getElementById("cfg-vendedor").value.trim();
   const g=document.getElementById("cfg-gestor").value.trim();
-  if(!v||!g){toast("⚠️ Preencha os dois nomes");return;}
-  await set(ref(db,"config/nomeVendedor"),v);
-  await set(ref(db,"config/nomeGestor"),g);
+  if(!v||!g){toast("⚠️ Preencha os nomes");return;}
+  await set(ref(db,"config/nomeVendedor"),v);await set(ref(db,"config/nomeGestor"),g);
   nomeVendedor=v;nomeGestor=g;
-  renderLogin();toast("✅ Nomes atualizados!");
+  document.getElementById("avatar-login-v").textContent=v.charAt(0);document.getElementById("label-login-v").textContent=v;
+  document.getElementById("avatar-login-g").textContent=g.charAt(0);document.getElementById("label-login-g").textContent=g;
+  toast("✅ Nomes atualizados!");
 };
-
 window.alterarSenha=async function(){
   const atual=document.getElementById("cfg-senha-atual").value;
   const nova=document.getElementById("cfg-senha-nova").value;
   if(atual!==senhaGestor){toast("❌ Senha atual incorreta");return;}
-  if(nova.length<4){toast("⚠️ Nova senha muito curta");return;}
-  await set(ref(db,"config/senhaGestor"),nova);
-  senhaGestor=nova;
-  document.getElementById("cfg-senha-atual").value="";
-  document.getElementById("cfg-senha-nova").value="";
+  if(nova.length<4){toast("⚠️ Senha muito curta");return;}
+  await set(ref(db,"config/senhaGestor"),nova);senhaGestor=nova;
+  document.getElementById("cfg-senha-atual").value="";document.getElementById("cfg-senha-nova").value="";
   toast("✅ Senha alterada!");
 };
-
 function renderGClientes(){
-  const div=document.getElementById("g-lista-clientes");
-  if(!div)return;
+  const div=document.getElementById("g-lista-clientes");if(!div)return;
   const lista=Object.entries(clientes).sort((a,b)=>a[1].nome.localeCompare(b[1].nome));
   if(!lista.length){div.innerHTML='<div class="empty">Nenhum cliente.</div>';return;}
   div.innerHTML="";
   lista.forEach(([k,c])=>{
     const item=document.createElement("div");item.className="list-item";
-    item.innerHTML=`<div><div style="font-weight:600;font-size:14px">${c.nome}</div>${c.tipo?`<div style="font-size:11px;color:#888">${c.tipo}${c.bairro?' · '+c.bairro:''}</div>`:""}</div><button class="btn-danger" onclick="removerCliente('${k}')">Remover</button>`;
+    item.innerHTML=`<div><div style="font-weight:600;font-size:14px">${c.nome}</div><div style="font-size:11px;color:#888">${c.bairro||''}${c.cidade?' · '+c.cidade:''}</div></div><button class="btn-danger" onclick="removerCliente('${k}')">Remover</button>`;
     div.appendChild(item);
   });
 }
-
 function renderGProdutos(){
-  const div=document.getElementById("g-lista-produtos");
-  if(!div)return;
+  const div=document.getElementById("g-lista-produtos");if(!div)return;
   const porCat={};
   Object.entries(produtos).forEach(([k,p])=>{if(!porCat[p.categoria])porCat[p.categoria]=[];porCat[p.categoria].push({key:k,...p});});
   div.innerHTML="";
@@ -622,9 +656,7 @@ function renderGProdutos(){
       div.appendChild(item);
     });
   });
-  if(!div.children.length)div.innerHTML='<div class="empty">Nenhum produto.</div>';
 }
-
 function escutarVendasVendedor(){
   const q=query(ref(db,"vendas"),orderByChild("timestamp"),startAt(hojeInicio()));
   onValue(q,snap=>{
@@ -642,7 +674,6 @@ function escutarVendasVendedor(){
     });
   });
 }
-
 function escutarVendasGestor(){
   const q=query(ref(db,"vendas"),orderByChild("timestamp"),startAt(hojeInicio()));
   onValue(q,snap=>{
@@ -663,11 +694,6 @@ function escutarVendasGestor(){
     });
   });
 }
-
-// Iniciar — mostrar botões imediatamente com nomes padrão
-renderLogin();
-// Depois atualiza com dados do Firebase
-carregarConfig();
 </script>
 </body>
 </html>
