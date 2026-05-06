@@ -659,9 +659,15 @@ function renderGProdutos(){
   });
 }
 function escutarVendasVendedor(){
-  const q=query(ref(db,"vendas"),orderByChild("timestamp"),startAt(hojeInicio()));
-  onValue(q,snap=>{
-    const vendas=[];snap.forEach(c=>vendas.unshift(c.val()));
+  onValue(ref(db,"vendas"),snap=>{
+    const hoje=new Date().toLocaleDateString("pt-BR");
+    const vendas=[];
+    snap.forEach(c=>{
+      const v=c.val();
+      // Filtra por data de hoje comparando com hora registrada
+      const tsHoje = v.timestamp >= hojeInicio();
+      if(tsHoje) vendas.unshift(v);
+    });
     document.getElementById("v-kpi-v").textContent=vendas.length;
     document.getElementById("v-kpi-c").textContent=vendas.reduce((a,v)=>a+v.totalCartelas,0);
     const lista=document.getElementById("v-lista-vendas");
@@ -676,9 +682,12 @@ function escutarVendasVendedor(){
   });
 }
 function escutarVendasGestor(){
-  const q=query(ref(db,"vendas"),orderByChild("timestamp"),startAt(hojeInicio()));
-  onValue(q,snap=>{
-    const vendas=[];snap.forEach(c=>vendas.unshift(c.val()));
+  onValue(ref(db,"vendas"),snap=>{
+    const vendas=[];
+    snap.forEach(c=>{
+      const v=c.val();
+      if(v.timestamp >= hojeInicio()) vendas.unshift(v);
+    });
     const fat=vendas.reduce((a,v)=>a+v.totalVal,0);
     document.getElementById("w-v").textContent=vendas.length;
     document.getElementById("w-c").textContent=vendas.reduce((a,v)=>a+v.totalCartelas,0);
