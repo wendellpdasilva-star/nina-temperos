@@ -355,8 +355,8 @@ const CLIENTES_BASE = [
 
 // Lógica de rota por bairro + COD para dividir Pau Amarelo e Janga
 function diaDoCliente(c){
-  if(c.bairro==="Pau Amarelo") return c.cod<=21?"Terça":"Quarta";
-  if(c.bairro==="Janga") return c.cod<=33?"Quinta":"Sábado";
+  if(c.bairro==="Pau Amarelo") return (!c.cod||c.cod>21)?"Quarta":"Terça";
+  if(c.bairro==="Janga") return (!c.cod||c.cod>33)?"Sábado":"Quinta";
   const mapa={
     "Nossa Senhora da Conceição":"Quinta",
     "Jd. Maranguape":"Quinta",
